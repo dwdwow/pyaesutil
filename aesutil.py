@@ -115,11 +115,12 @@ def decrypt_from_input() -> None:
         raise ValueError(f"Invalid hex key - {str(e)}")
         
 
-def decrypt_file_from_input_hex_key() -> str:
+def decrypt_file_from_input_hex_key(file_path: str = None) -> str:
     """
     Get file path and hex key from terminal, decrypt file contents and return decrypted string
     """
-    file_path = input("Enter file path: ")
+    if not file_path:
+        file_path = input("Enter file path: ")
     key_hex = getpass.getpass("Enter 32-byte hex key: ")
     
     try:
